@@ -3,7 +3,11 @@ import logging
 import shutil
 import os
 
-class FileCopyInstaller():
+class BaseInstaller():
+    def install(self):
+        raise NotImplementedError();
+
+class FileCopyInstaller(BaseInstaller):
     """
     Copies file from local path to destination path.
     Expect that local_back_path is existing dir.
@@ -40,19 +44,35 @@ class FileCopyInstaller():
         shutil.copy(self.file_destination_path, self._get_file_backup_path())
 
 
-class VimInstaller(FileCopyInstaller):
+class VimInstaller(BaseInstaller):
     """
     Copies vimrc from local path to destination path.
+    Install Plug plugin manager with instaructions from
+    https://github.com/junegunn/vim-plug
     Expect that local_back_path is existing dir.
     """
-    def __init__(self, vimrc_local_path,
+    def __init__(self,
+                 vimrc_local_path,
                  vimrc_destination_path,
                  vimrc_backup_name,
+                 plugvim_local_path,
+                 plugvim_destination_path,
+                 plugvim_backup_name,
                  local_backup_path, logger):
-        FileCopyInstaller.__init__(self, vimrc_local_path,
-                                   vimrc_destination_path,
-                                   vimrc_backup_name,
-                                   local_backup_path, logger)
+        self.copy_vimrc_installer = FileCopyInstaller(
+                vimrc_local_path,
+                vimrc_destination_path,
+                vimrc_backup_name,
+                local_backup_path, logger)
+        self.copy_plugvim_installer = FileCopyInstaller(
+                plugvim_local_path,
+                plugvim_destination_path,
+                plugvim_backup_name,
+                local_backup_path, logger)
+
+    def install(self):
+        self.copy_vimrc_installer.install()
+        self.copy_plugvim_installer.install()
 
 class TmuxInstaller(FileCopyInstaller):
     """
@@ -87,6 +107,9 @@ class Installer():
     VIMRC_LOCAL_PATH = "./vimrc"
     VIMRC_BACKUP_NAME = "vimrc"
     VIMRC_DESTINATION_PATH = "{HOME}/.vimrc"
+    PLUGVIM_LOCAL_PATH = "third_party/vim-plug/plug.vim"
+    PLUGVIM_BACKUP_NAME = "plug.vim"
+    PLUGVIM_DESTINATION_PATH = "{HOME}/.vim/autoload/plug.vim"
     TMUXCONF_LOCAL_PATH = "./tmux.conf"
     TMUXCONF_BACKUP_NAME = "tmux.conf"
     TMUXCONF_DESTINATION_PATH = "{HOME}/.tmux.conf"
@@ -100,9 +123,14 @@ class Installer():
 
         self.VIMRC_DESTINATION_PATH = \
             self.VIMRC_DESTINATION_PATH.format(HOME=os.environ["HOME"])
+        self.PLUGVIM_DESTINATION_PATH = \
+            self.PLUGVIM_DESTINATION_PATH.format(HOME=os.environ["HOME"])
         self.vim_installer = VimInstaller(self.VIMRC_LOCAL_PATH,
                                           self.VIMRC_DESTINATION_PATH,
                                           self.VIMRC_BACKUP_NAME,
+                                          self.PLUGVIM_LOCAL_PATH,
+                                          self.PLUGVIM_DESTINATION_PATH,
+                                          self.PLUGVIM_BACKUP_NAME,
                                           self.LOCAL_BACKUP_PATH,
                                           self.logger)
 
