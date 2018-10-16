@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import logging
 import shutil
+import subprocess
+import sys
 import os
 
 class BaseInstaller():
@@ -23,6 +25,11 @@ class FileCopyInstaller(BaseInstaller):
         self.logger =  logger
 
     def install(self):
+        if not self._base_directory_exists():
+            self.logger.warn("directory: %s does not exist, will create it",
+                             self._get_base_directory())
+            self._create_base_directory()
+
         if self._file_exists():
             self.logger.warn("file: %s exists, will backup it to %s",
                              self.file_destination_path,
@@ -31,11 +38,21 @@ class FileCopyInstaller(BaseInstaller):
 
         self._install_file()
 
-    def _install_file(self):
-        shutil.copy(self.file_local_path, self.file_destination_path)
+    def _get_base_directory(self):
+        return os.path.dirname(self.file_destination_path)
+
+    def _base_directory_exists(self):
+        return os.path.exists(self._get_base_directory())
+
+    def _create_base_directory(self):
+        return os.makedirs(self._get_base_directory())
 
     def _file_exists(self):
         return os.path.exists(self.file_destination_path)
+
+    def _install_file(self):
+        shutil.copy(self.file_local_path, self.file_destination_path)
+
 
     def _get_file_backup_path(self):
         return os.path.join(self.local_backup_path, self.file_backup_name)
@@ -157,6 +174,10 @@ class Installer():
         self.zsh_installer.install()
 
     def _common_setup(self):
+        if subprocess.call(["git", "submodule", "update", "--init", "--recursive"]):
+          self.logger.fatal("Can not update submodules.")
+          sys.exit(1)
+
         if not os.path.exists(self.LOCAL_BACKUP_PATH):
             os.makedirs(self.LOCAL_BACKUP_PATH)
 
