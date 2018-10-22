@@ -7,6 +7,9 @@ noremap <Right> <NOP>
 " Line numbers
 set number
 
+" Fix backspace on Mac OS
+set backspace=2
+
 " code specific
 set tabstop=2
 set shiftwidth=2
