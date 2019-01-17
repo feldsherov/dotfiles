@@ -38,3 +38,6 @@ let g:clang_format#code_style='google'
 " map to <Leader>cf in C++ code
 nmap <Leader>cf :ClangFormat<CR>
 vmap <Leader>cf :ClangFormat<CR>
+
+" 81 collumn is read
+set colorcolumn=81

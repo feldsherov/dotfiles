@@ -31,9 +31,9 @@ class FileCopyInstaller(BaseInstaller):
             self._create_base_directory()
 
         if self._file_exists():
-            self.logger.warn("file: %s exists, will backup it to %s",
-                             self.file_destination_path,
-                             self._get_file_backup_path())
+            self.logger.warning("file: %s exists, will backup it to %s",
+                                self.file_destination_path,
+                                self._get_file_backup_path())
             self._backup_file()
 
         self._install_file()
