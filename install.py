@@ -64,7 +64,7 @@ class FileCopyInstaller(BaseInstaller):
 class VimInstaller(BaseInstaller):
     """
     Copies vimrc from local path to destination path.
-    Install Plug plugin manager with instaructions from
+    Install Plug plugin manager with instructions from
     https://github.com/junegunn/vim-plug
     Expect that local_back_path is existing dir.
     """
