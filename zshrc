@@ -11,6 +11,8 @@
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir virtualenv vcs)
+
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
