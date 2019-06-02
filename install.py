@@ -53,8 +53,6 @@ class GenericCopyInstaller(BaseInstaller):
 
     def _install(self):
         raise NotImplementedError()
-        shutil.copy(self.local_path, self.destination_path)
-
 
     def _get_backup_path(self):
         return os.path.join(self.local_backup_path, self.backup_name)

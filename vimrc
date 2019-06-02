@@ -28,6 +28,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'PegasusWang/vim-ubuntu-pastebin'
 Plug 'nvie/vim-flake8'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
