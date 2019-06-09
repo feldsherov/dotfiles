@@ -64,7 +64,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir virtualenv vcs)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  emacs
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -77,11 +76,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -102,3 +97,8 @@ alias tmux="tmux -2" # force 256 colors in tmux
 # Setting for the new UTF-8 terminal support in Lion
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+# Setting ctrl+left/ctrl+right as jump to next word
+bindkey -e
+bindkey '^[[1;9C' forward-word
+bindkey '^[[1;9D' backward-word
