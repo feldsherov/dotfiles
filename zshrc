@@ -64,6 +64,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir virtualenv vcs)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  cargo
 )
 
 source $ZSH/oh-my-zsh.sh
