@@ -29,6 +29,7 @@ Plug 'PegasusWang/vim-ubuntu-pastebin'
 Plug 'nvie/vim-flake8'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'cespare/vim-toml'
+Plug 'rust-lang/rust.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 
