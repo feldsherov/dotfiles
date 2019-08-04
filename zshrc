@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -11,10 +11,12 @@ export LC_ALL=en_US.UTF-8
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir virtualenv vcs)
+ZSH_THEME="common"
+
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir virtualenv vcs)
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
