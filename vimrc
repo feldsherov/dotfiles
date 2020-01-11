@@ -30,8 +30,9 @@ Plug 'nvie/vim-flake8'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+Plug 'bogado/file-line'
+Plug 'derekwyatt/vim-fswitch'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
 
 call plug#end()
 
@@ -40,9 +41,10 @@ let g:airline#extensions#tabline#enabled = 1
 
 " code style
 let g:clang_format#code_style='google'
-" map to <Leader>cf in C++ code
-nmap <Leader>cf :ClangFormat<CR>
-vmap <Leader>cf :ClangFormat<CR>
+noremap <Leader>cf :ClangFormat<CR>
+vnoremap <Leader>cf :ClangFormat<CR>
+
+noremap <Leader>of :FSHere<CR>
 
 " 81 collumn is read
 set colorcolumn=81
