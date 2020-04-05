@@ -16,6 +16,9 @@ set shiftwidth=2
 set expandtab
 set smarttab
 
+" highlighte search result
+set hlsearch
+
 " Plug related stuff
 call plug#begin('~/.vim/plugged')
 
@@ -32,6 +35,8 @@ Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'bogado/file-line'
 Plug 'derekwyatt/vim-fswitch'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gist'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 call plug#end()
