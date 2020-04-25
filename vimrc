@@ -9,6 +9,9 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+" Turn on syntax highlighting.
+syntax on
+
 " This setting makes search case-insensitive when all characters in the string
 " being searched are lowercase. However, the search becomes case-sensitive if
 " it contains any capital letters. This makes searching more convenient.
@@ -26,6 +29,9 @@ set noerrorbells visualbell t_vb=
 
 " Line numbers
 set number
+
+" Disable the default Vim startup message.
+set shortmess+=I
 
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.
