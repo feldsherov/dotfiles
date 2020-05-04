@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      force: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.vimrc:
+      path: vimrc
+    ~/.zshrc:
+      path: zshrc
+    ~/.tmux.conf:
+      path: tmux.conf
+    ~/.tmux:
+      path: tmux
+
+- link:
+    ~/.vim/autoload/plug.vim:
+      create: true
+      path: vim/vim-plug/plug.vim
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [vim -c "PlugInstall | qa", Installing vim plugins]
+  - [~/.tmux/tpm/bin/install_plugins, Install tmux plugins]
