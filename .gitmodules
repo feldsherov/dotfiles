@@ -1,10 +1,11 @@
-[submodule "third_party/vim-plug"]
+[submodule "vim/vim-plug"]
 	path = vim/vim-plug
 	url = https://github.com/junegunn/vim-plug
 
-[submodule "third_party/tpm"]
-	path = tmux/tpm
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
