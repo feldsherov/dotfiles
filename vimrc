@@ -57,7 +57,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/vim-clang-format'
-Plug 'PegasusWang/vim-ubuntu-pastebin'
 Plug 'nvie/vim-flake8'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'cespare/vim-toml'
@@ -66,6 +65,8 @@ Plug 'bogado/file-line'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
+Plug 'Chiel92/vim-autoformat'
+Plug 'chr4/nginx.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 call plug#end()
@@ -77,6 +78,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:clang_format#code_style='google'
 noremap <Leader>cf :ClangFormat<CR>
 vnoremap <Leader>cf :ClangFormat<CR>
+
+noremap <Leader>rf :RustFmt<CR>
+vnoremap <Leader>rf :RustFmtRange<CR>
+
+noremap <F3> :Autoformat<CR>
 
 noremap <Leader>of :FSHere<CR>
 
