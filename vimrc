@@ -1,14 +1,3 @@
-" Turn off arrows
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
-
 " Turn on syntax highlighting.
 syntax on
 
@@ -40,8 +29,8 @@ set shortmess+=I
 set backspace=indent,eol,start
 
 " code specific
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 
@@ -51,33 +40,52 @@ set hlsearch
 " Plug related stuff
 call plug#begin('~/.vim/plugged')
 
+" vim visual setup
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'chriskempson/base16-vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'rhysd/vim-clang-format'
-Plug 'nvie/vim-flake8'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
 Plug 'bogado/file-line'
-Plug 'derekwyatt/vim-fswitch'
+
+" generic library
 Plug 'mattn/webapi-vim'
+
+" git integration
+Plug 'airblade/vim-gitgutter'
+
+" navigation between vim aand tmux
+Plug 'christoomey/vim-tmux-navigator'
+
+" github gist integration
 Plug 'mattn/vim-gist'
-Plug 'Chiel92/vim-autoformat'
+
+" rust tools
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+
+
+" nginx config files syntax highlite
 Plug 'chr4/nginx.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+" fast switch between cpp/h files
+Plug 'derekwyatt/vim-fswitch'
+
+" laanguage server integration
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
+" cland-format support, i have no
+" good clang format config. so do not use it.
+" Plug 'rhysd/vim-clang-format'
+
+" vim flake8 support. I have no
+" good python linter configs.
+" Plug 'nvie/vim-flake8'
 
 call plug#end()
 
 " airline setup
 let g:airline#extensions#tabline#enabled = 1
-
-" code style
-let g:clang_format#code_style='google'
-noremap <Leader>cf :ClangFormat<CR>
-vnoremap <Leader>cf :ClangFormat<CR>
 
 noremap <Leader>rf :RustFmt<CR>
 vnoremap <Leader>rf :RustFmtRange<CR>
@@ -88,3 +96,9 @@ noremap <Leader>of :FSHere<CR>
 
 " 81 collumn is read
 set colorcolumn=81
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
