@@ -34,7 +34,7 @@ set shiftwidth=4
 set expandtab
 set smarttab
 
-" highlighte search result
+" highlight search result
 set hlsearch
 
 " Plug related stuff
@@ -102,3 +102,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" chop trailing whitespaces
+let g:strip_whitespace_on_save=1
+" enable whitespace highlite
+
+highlight ExtraWhitespace ctermbg=gray
+let g:better_whitespace_enabled=1
