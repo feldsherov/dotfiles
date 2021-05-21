@@ -1,3 +1,6 @@
+alias ya="~/arcada/ya"
+alias m="~/arcada/ya make"
+#
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
 
