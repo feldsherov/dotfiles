@@ -34,7 +34,7 @@ set shiftwidth=4
 set expandtab
 set smarttab
 
-" highlighte search result
+" highlight search result
 set hlsearch
 
 " Plug related stuff
@@ -71,7 +71,7 @@ Plug 'chr4/nginx.vim'
 Plug 'derekwyatt/vim-fswitch'
 
 " laanguage server integration
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 " cland-format support, i have no
@@ -98,7 +98,18 @@ noremap <Leader>of :FSHere<CR>
 set colorcolumn=81
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" chop trailing whitespaces
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+
+" enable whitespace highlite
+highlight ExtraWhitespace ctermbg=gray
+let g:better_whitespace_enabled=1
+
+" add go autoformat on save
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
